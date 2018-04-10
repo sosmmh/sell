@@ -40,7 +40,7 @@
                         <td>${productInfo.getCreateTime()}</td>
                         <td>${productInfo.getUpdateTime()}</td>
                         <td>
-                            <a href="/sell/seller/prodouct/index?productId=${productInfo.getProductId()}">修改</a>
+                            <a href="/sell/seller/product/index?productId=${productInfo.getProductId()}">修改</a>
                         </td>
                         <td>
                             <#if productInfo.getProductStatusEnum().getMessage() == "在架">

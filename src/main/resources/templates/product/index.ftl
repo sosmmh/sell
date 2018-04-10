@@ -12,28 +12,42 @@
             <div class="container-fluid">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
-                        <form role="form">
+                        <form role="form" method="post" action="/sell/seller/product/save">
                             <div class="form-group">
-                                <label>名称</label><input name="productName" type="text" class="form-control" value="${productInfo.getProductName()}"/>
+                                <label>名称</label>
+                                <input name="productName" type="text" class="form-control" value="${(productInfo.getProductName())!''}"/>
                             </div>
                             <div class="form-group">
-                                <label>价格</label><input name="productPrice" type="text" class="form-control" value="${productInfo.getProductPrice()}"/>
+                                <label>价格</label>
+                                <input name="productPrice" type="text" class="form-control" value="${(productInfo.getProductPrice())!''}"/>
                             </div>
                             <div class="form-group">
-                                <label>库存</label><input name="productStock" type="text" class="form-control" value="${productInfo.getProductStock()}"/>
+                                <label>库存</label>
+                                <input name="productStock" type="number" class="form-control" value="${(productInfo.getProductStock())!''}"/>
                             </div>
                             <div class="form-group">
-                                <label>描述</label><input name="productDescription" type="text" class="form-control" value="${productInfo.getProductDescription()}" />
+                                <label>描述</label>
+                                <input name="productDescription" type="text" class="form-control" value="${(productInfo.getProductDescription())!''}" />
                             </div>
                             <div class="form-group">
-                                <label>图片</label><input name="productIcon" type="file" id="exampleInputFile" />
-                                <p class="help-block">
-                                    Example block-level help text here.
-                                </p>
+                                <label>图片</label>
+                                <img height="80" src="${(productInfo.getProductIcon())!''}" alt="">
+                                <input name="productIcon" type="text" class="form-control" value="${(productInfo.getProductIcon())!''}" />
                             </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" />Check me out</label>
-                            </div> <button type="submit" class="btn btn-default">Submit</button>
+                            <div class="form-group">
+                                <label>类目</label>
+                                <select name="categoryType" class="form-control">
+                                    <#list categoryList as category>
+                                        <option value="${category.getCategoryType()}"
+                                            <#if (productInfo.categoryType)?? && productInfo.categoryType == category.categoryType>
+                                                selected </#if>>
+                                            ${category.getCategoryName()}
+                                        </option>
+                                    </#list>
+                                </select>
+                            </div>
+                            <input hidden type="text" name="productId" value="${(productInfo.productId)!''}">
+                            <button type="submit" class="btn btn-default">提交</button>
                         </form>
                     </div>
                 </div>
